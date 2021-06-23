@@ -3,7 +3,10 @@ package com.jeferson.scheduler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+//TODO testes unitários com jacoco e mutation, README do projeto, dockerfile, utilizar records do java 14 nos dtos e remover lombok
+//TODO Configurar Swagger para facilitar os testes e documentação da API
+//TODO Ajustar plugins do POM
+@SpringBootApplication(scanBasePackages = "com.jeferson.scheduler.*")
 public class NotificationSchedulerApplication {
 
     public static void main(String[] args) {

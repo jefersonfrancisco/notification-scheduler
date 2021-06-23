@@ -4,32 +4,50 @@ import com.jeferson.scheduler.adapter.api.dto.CreateNotificationDto;
 import com.jeferson.scheduler.adapter.api.mapper.NotificationMapper;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
 import com.jeferson.scheduler.core.usecase.CreateNotification;
+import com.jeferson.scheduler.core.usecase.DeleteNotification;
+import com.jeferson.scheduler.core.usecase.FindNotification;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-import javax.inject.Inject;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import javax.validation.Valid;
 
-@Path("/v1/notifications")
-@Produces(MediaType.APPLICATION_JSON)
+@Validated
+@RestController
+@RequestMapping("/v1/notifications")
 public class NotificationController {
 
     private final CreateNotification createNotification;
+    private final FindNotification findNotification;
+    private final DeleteNotification deleteNotification;
     private final NotificationMapper mapper;
 
-    @Inject
-    public NotificationController(CreateNotification createNotification, NotificationMapper mapper) {
+    public NotificationController(CreateNotification createNotification,
+                                  FindNotification findNotification,
+                                  DeleteNotification deleteNotification,
+                                  NotificationMapper mapper) {
         this.createNotification = createNotification;
+        this.findNotification = findNotification;
+        this.deleteNotification = deleteNotification;
         this.mapper = mapper;
     }
 
-    @POST
-    public Response create(CreateNotificationDto createNotificationDto) {
+    @PostMapping
+    public ResponseEntity create(@RequestBody @Valid CreateNotificationDto createNotificationDto) {
         NotificationDomain notificationResponse = createNotification.create(mapper.toDomain(createNotificationDto));
-        return Response.status(Response.Status.CREATED)
-                .entity(mapper.toResponse(notificationResponse))
-                .build();
+        return ResponseEntity.status(HttpStatus.CREATED).body(notificationResponse);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity find(@PathVariable("id") final String id) {
+        NotificationDomain notificationDomain = findNotification.find(id);
+        return ResponseEntity.ok(mapper.toResponse(notificationDomain));
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable("id") final String id) {
+        deleteNotification.delete(id);
     }
 }

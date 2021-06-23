@@ -9,7 +9,9 @@ public interface NotificationPersistence {
 
     NotificationDomain create(CreateNotificationDomain createNotification);
 
-    Optional<NotificationDomain> findById(Long id);
+    Optional<NotificationDomain> findById(String id);
 
-    void delete(Long id);
+    void delete(String id);
+
+    boolean existsById(String id);
 }

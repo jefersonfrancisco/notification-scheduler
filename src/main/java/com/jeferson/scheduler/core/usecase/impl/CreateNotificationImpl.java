@@ -4,18 +4,13 @@ import com.jeferson.scheduler.core.domain.CreateNotificationDomain;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
 import com.jeferson.scheduler.core.usecase.CreateNotification;
 import com.jeferson.scheduler.core.usecase.port.NotificationPersistence;
+import org.springframework.stereotype.Service;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-@Named
-@ApplicationScoped
+@Service
 public class CreateNotificationImpl implements CreateNotification {
 
     private final NotificationPersistence notificationPersistence;
 
-    @Inject
     public CreateNotificationImpl(NotificationPersistence notificationPersistence) {
         this.notificationPersistence = notificationPersistence;
     }

@@ -4,12 +4,9 @@ import com.jeferson.scheduler.adapter.api.dto.CreateNotificationDto;
 import com.jeferson.scheduler.adapter.api.dto.NotificationResponseDto;
 import com.jeferson.scheduler.core.domain.CreateNotificationDomain;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
+import org.springframework.stereotype.Component;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
-
-@Named
-@ApplicationScoped
+@Component
 public class NotificationMapper {
 
     public CreateNotificationDomain toDomain(final CreateNotificationDto dto) {

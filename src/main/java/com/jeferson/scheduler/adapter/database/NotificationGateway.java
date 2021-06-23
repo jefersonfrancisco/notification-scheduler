@@ -6,20 +6,16 @@ import com.jeferson.scheduler.adapter.database.repository.NotificationEntityRepo
 import com.jeferson.scheduler.core.domain.CreateNotificationDomain;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
 import com.jeferson.scheduler.core.usecase.port.NotificationPersistence;
+import org.springframework.stereotype.Service;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.Optional;
 
-@Named
-@ApplicationScoped
+@Service
 public class NotificationGateway implements NotificationPersistence {
 
     private final NotificationEntityRepository repository;
     private final NotificationEntityMapper mapper;
 
-    @Inject
     public NotificationGateway(NotificationEntityRepository repository, NotificationEntityMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
@@ -31,12 +27,18 @@ public class NotificationGateway implements NotificationPersistence {
     }
 
     @Override
-    public Optional<NotificationDomain> findById(Long id) {
-        return Optional.empty();
+    public Optional<NotificationDomain> findById(String id) {
+        Optional<NotificationEntity> entity = repository.findById(id);
+        return entity.map(mapper::toDomain);
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
+        repository.deleteById(id);
+    }
 
+    @Override
+    public boolean existsById(String id) {
+        return repository.existsById(id);
     }
 }
