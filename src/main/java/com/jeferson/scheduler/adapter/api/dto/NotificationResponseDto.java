@@ -19,4 +19,5 @@ public class NotificationResponseDto {
     private String recipientPhoneId;
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SS")
     private LocalDateTime scheduleDate;
+    private String status;
 }

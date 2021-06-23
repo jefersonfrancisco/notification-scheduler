@@ -6,6 +6,7 @@ import com.jeferson.scheduler.adapter.database.entity.NotificationStatusEntity;
 import com.jeferson.scheduler.core.domain.CreateNotificationDomain;
 import com.jeferson.scheduler.core.domain.NotificationChannelDomain;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
+import com.jeferson.scheduler.core.domain.NotificationStatusDomain;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,6 +22,7 @@ public class NotificationEntityMapper {
                 .scheduleDate(entity.getScheduleDate())
                 .recipientMail(entity.getRecipientMail())
                 .recipientPhoneNumber(entity.getRecipientPhoneNumber())
+                .status(NotificationStatusDomain.valueOf(entity.getStatus().name()))
                 .build();
     }
 

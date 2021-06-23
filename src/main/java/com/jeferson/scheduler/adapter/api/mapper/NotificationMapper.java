@@ -31,6 +31,7 @@ public class NotificationMapper {
                 .scheduleDate(notificationDomain.getScheduleDate())
                 .recipientMail(notificationDomain.getRecipientMail())
                 .recipientPhoneNumber(notificationDomain.getRecipientPhoneNumber())
+                .status(notificationDomain.getStatus().name())
                 .build();
     }
 }

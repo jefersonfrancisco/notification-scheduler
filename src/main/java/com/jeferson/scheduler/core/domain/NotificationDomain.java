@@ -17,4 +17,5 @@ public class NotificationDomain {
     private String recipientPhoneNumber;
     private String recipientPhoneId;
     private LocalDateTime scheduleDate;
+    private NotificationStatusDomain status;
 }
