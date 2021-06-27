@@ -5,6 +5,6 @@ import com.jeferson.scheduler.core.domain.NotificationDomain;
 
 public interface CreateNotification {
 
-    NotificationDomain create(CreateNotificationDomain createNotification);
+  NotificationDomain create(CreateNotificationDomain createNotification);
 
 }

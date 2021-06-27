@@ -6,39 +6,39 @@ import com.jeferson.scheduler.adapter.database.repository.NotificationEntityRepo
 import com.jeferson.scheduler.core.domain.CreateNotificationDomain;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
 import com.jeferson.scheduler.core.usecase.port.NotificationPersistence;
-import org.springframework.stereotype.Service;
-
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class NotificationGateway implements NotificationPersistence {
 
-    private final NotificationEntityRepository repository;
-    private final NotificationEntityMapper mapper;
+  private final NotificationEntityRepository repository;
+  private final NotificationEntityMapper mapper;
 
-    public NotificationGateway(NotificationEntityRepository repository, NotificationEntityMapper mapper) {
-        this.repository = repository;
-        this.mapper = mapper;
-    }
+  public NotificationGateway(NotificationEntityRepository repository,
+      NotificationEntityMapper mapper) {
+    this.repository = repository;
+    this.mapper = mapper;
+  }
 
-    public NotificationDomain create(CreateNotificationDomain createNotification) {
-        NotificationEntity entity = repository.save(mapper.toEntity(createNotification));
-        return mapper.toDomain(entity);
-    }
+  public NotificationDomain create(CreateNotificationDomain createNotification) {
+    NotificationEntity entity = repository.save(mapper.toEntity(createNotification));
+    return mapper.toDomain(entity);
+  }
 
-    @Override
-    public Optional<NotificationDomain> findById(String id) {
-        Optional<NotificationEntity> entity = repository.findById(id);
-        return entity.map(mapper::toDomain);
-    }
+  @Override
+  public Optional<NotificationDomain> findById(String id) {
+    Optional<NotificationEntity> entity = repository.findById(id);
+    return entity.map(mapper::toDomain);
+  }
 
-    @Override
-    public void delete(String id) {
-        repository.deleteById(id);
-    }
+  @Override
+  public void delete(String id) {
+    repository.deleteById(id);
+  }
 
-    @Override
-    public boolean existsById(String id) {
-        return repository.existsById(id);
-    }
+  @Override
+  public boolean existsById(String id) {
+    return repository.existsById(id);
+  }
 }

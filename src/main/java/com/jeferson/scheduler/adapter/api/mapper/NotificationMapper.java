@@ -9,29 +9,27 @@ import org.springframework.stereotype.Component;
 @Component
 public class NotificationMapper {
 
-    public CreateNotificationDomain toDomain(final CreateNotificationDto dto) {
-        return CreateNotificationDomain.builder()
-                .body(dto.getBody())
-                .recipientName(dto.getRecipientName())
-                .recipientPhoneId(dto.getRecipientPhoneId())
-                .channel(dto.getChannel())
-                .scheduleDate(dto.getScheduleDate())
-                .recipientMail(dto.getRecipientMail())
-                .recipientPhoneNumber(dto.getRecipientPhoneNumber())
-                .build();
-    }
+  public CreateNotificationDomain toDomain(final CreateNotificationDto dto) {
+    return CreateNotificationDomain.builder()
+        .body(dto.getBody())
+        .recipientName(dto.getRecipientName())
+        .channel(dto.getChannel())
+        .scheduleDate(dto.getScheduleDate())
+        .recipientMail(dto.getRecipientMail())
+        .recipientPhoneNumber(dto.getRecipientPhoneNumber())
+        .build();
+  }
 
-    public NotificationResponseDto toResponse(final NotificationDomain notificationDomain) {
-        return NotificationResponseDto.builder()
-                .id(notificationDomain.getId())
-                .body(notificationDomain.getBody())
-                .recipientName(notificationDomain.getRecipientName())
-                .recipientPhoneId(notificationDomain.getRecipientPhoneId())
-                .channel(notificationDomain.getChannel())
-                .scheduleDate(notificationDomain.getScheduleDate())
-                .recipientMail(notificationDomain.getRecipientMail())
-                .recipientPhoneNumber(notificationDomain.getRecipientPhoneNumber())
-                .status(notificationDomain.getStatus().name())
-                .build();
-    }
+  public NotificationResponseDto toResponse(final NotificationDomain notificationDomain) {
+    return NotificationResponseDto.builder()
+        .id(notificationDomain.getId())
+        .body(notificationDomain.getBody())
+        .recipientName(notificationDomain.getRecipientName())
+        .channel(notificationDomain.getChannel())
+        .scheduleDate(notificationDomain.getScheduleDate())
+        .recipientMail(notificationDomain.getRecipientMail())
+        .recipientPhoneNumber(notificationDomain.getRecipientPhoneNumber())
+        .status(notificationDomain.getStatus().name())
+        .build();
+  }
 }

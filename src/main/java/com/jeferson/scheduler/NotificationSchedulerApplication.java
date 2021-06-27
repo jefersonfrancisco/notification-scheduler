@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(scanBasePackages = "com.jeferson.scheduler.*")
 public class NotificationSchedulerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(NotificationSchedulerApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(NotificationSchedulerApplication.class, args);
+  }
 
 }

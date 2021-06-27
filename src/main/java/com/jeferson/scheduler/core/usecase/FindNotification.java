@@ -4,5 +4,5 @@ import com.jeferson.scheduler.core.domain.NotificationDomain;
 
 public interface FindNotification {
 
-    NotificationDomain find(String id);
+  NotificationDomain find(String id);
 }

@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateNotificationImpl implements CreateNotification {
 
-    private final NotificationPersistence notificationPersistence;
+  private final NotificationPersistence notificationPersistence;
 
-    public CreateNotificationImpl(NotificationPersistence notificationPersistence) {
-        this.notificationPersistence = notificationPersistence;
-    }
+  public CreateNotificationImpl(NotificationPersistence notificationPersistence) {
+    this.notificationPersistence = notificationPersistence;
+  }
 
-    @Override
-    public NotificationDomain create(CreateNotificationDomain createNotification) {
-        return notificationPersistence.create(createNotification);
-    }
+  @Override
+  public NotificationDomain create(CreateNotificationDomain createNotification) {
+    return notificationPersistence.create(createNotification);
+  }
 }
