@@ -12,5 +12,4 @@ public interface NotificationPersistence {
 
   void delete(String id);
 
-  boolean existsById(String id);
 }
