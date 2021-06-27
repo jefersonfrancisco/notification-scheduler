@@ -3,6 +3,7 @@ package com.jeferson.scheduler.adapter.api.mapper;
 import com.jeferson.scheduler.adapter.api.dto.CreateNotificationDto;
 import com.jeferson.scheduler.adapter.api.dto.NotificationResponseDto;
 import com.jeferson.scheduler.core.domain.CreateNotificationDomain;
+import com.jeferson.scheduler.core.domain.NotificationChannelDomain;
 import com.jeferson.scheduler.core.domain.NotificationDomain;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ public class NotificationMapper {
     return CreateNotificationDomain.builder()
         .body(dto.getBody())
         .recipientName(dto.getRecipientName())
-        .channel(dto.getChannel())
+        .channel(NotificationChannelDomain.valueOf(dto.getChannel()))
         .scheduleDate(dto.getScheduleDate())
         .recipientMail(dto.getRecipientMail())
         .recipientPhoneNumber(dto.getRecipientPhoneNumber())
