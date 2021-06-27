@@ -10,12 +10,13 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 @Service
-public class NotificationGateway implements NotificationPersistence {
+public class NotificationPersistenceGateway implements NotificationPersistence {
 
   private final NotificationEntityRepository repository;
+
   private final NotificationEntityMapper mapper;
 
-  public NotificationGateway(NotificationEntityRepository repository,
+  public NotificationPersistenceGateway(NotificationEntityRepository repository,
       NotificationEntityMapper mapper) {
     this.repository = repository;
     this.mapper = mapper;
