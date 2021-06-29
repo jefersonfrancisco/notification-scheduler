@@ -42,7 +42,7 @@ Esse comando fará o build da imagem do projeto e levantará o banco de dados e 
 
 ## Execução do projeto via intellij/eclipse
 
-Para rodar o projeto local é necessário ter o banco de dados rodando local. Para subir apenas o banco acessar a pasta docker e executar:
+Para rodar o projeto local é necessário ter o banco de dados rodando. Para subir apenas o banco acesse a pasta docker e execute:
 
 ```
 docker-compose up
